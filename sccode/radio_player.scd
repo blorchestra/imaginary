@@ -1,4 +1,5 @@
 (
+m = NetAddr("127.0.0.1", 57120)
 ~bloRP = Window.new("An OSC Radio Player by Barcelona Laptop Orchestra", Rect(40,40,810,60)).front;
 ~bloRP.onClose_{m.disconnect; "Please, visit us at http://www.blo.cat".postln};
 ~bloText1 = StaticText(~bloRP, Rect(10,10,120,20))
