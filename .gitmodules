@@ -1,0 +1,3 @@
+[submodule "Wolfcastle"]
+	path = Wolfcastle
+	url = https://github.com/carthach/Wolfcastle
