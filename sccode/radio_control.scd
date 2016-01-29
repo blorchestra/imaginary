@@ -55,7 +55,7 @@ m = NetAddr("192.168.1.255", 57120); // BLO network broadcast address
 	postf("Sending OSC: ");
 	header = "/"++(~bloPlayerID.value+1)++"/tone";
 	value  = butt.value.asInteger;
-	m.sendMsg(header,value)
+	m.sendMsg(header,value);
 	postf("Sending tone via OSC: "+header+value+"%\n");
 });
 ~bloClose = Button(~bloRP, Rect(750,30,50,20))
