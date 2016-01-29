@@ -1,4 +1,5 @@
 (
+NetAddr.broadcastFlag = true;
 m = NetAddr("127.0.0.1", 57120);
 ~bloRP = Window.new("An OSC Radio Player by Barcelona Laptop Orchestra", Rect(40,40,810,60)).front;
 ~bloRP.onClose_{m.disconnect; "Please, visit us at http://www.blo.cat".postln};
@@ -9,7 +10,6 @@ m = NetAddr("127.0.0.1", 57120);
     .action_({arg field;
 	    m.disconnect;
 	    m = NetAddr(field.value.asString, ~bloPort.value.asInteger).postln;
-	    NetAddr.broadcastFlag = true;
     });
 ~bloText2 = StaticText(~bloRP, Rect(140,10,50,20))
     .string_("Port");
@@ -18,7 +18,6 @@ m = NetAddr("127.0.0.1", 57120);
     .action_({arg field;
 	    m.disconnect;
 	    m = NetAddr(~bloIP.value.asString, field.value.asInteger).postln;
-	    NetAddr.broadcastFlag = true;
     });
 ~bloText3 = StaticText(~bloRP, Rect(200,10,60,20))
     .string_("Radio n.");
