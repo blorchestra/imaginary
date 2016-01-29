@@ -4,7 +4,6 @@
 // --------------------------------
 NetAddr.broadcastFlag = true;
 m = NetAddr("192.168.1.255", 57120); // <---- Put your IP address and port here.
-m = NetAddr("127.0.0.1", 57120); // <---- Put your IP address and port here.
 
 MIDIIn.connectAll;
 MIDIdef.noteOn (\padOn , { |vel, note, chan, port|
