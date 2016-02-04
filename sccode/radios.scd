@@ -116,7 +116,7 @@ o=[ OSCFunc.newMatching({|msg, time, addr, recvPort| ~landsSetDial.value(msg[1],
     .string_("Dial &");
 ~landsDial = 12.collect{arg i;
 	LevelIndicator(~landsWindow, Rect(65+(55*i)+3,65,20,200))
-	.warning_(1)
+	.warning_(0)
 	.critical_(1)
 	.numTicks_(21)
 	.numMajorTicks_(5);
