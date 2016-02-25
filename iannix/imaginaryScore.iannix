@@ -1,0 +1,98 @@
+/*
+	IanniX score example: Xenakis Metastaseis linear (c) by IanniX Association
+	This file was written by Guillaume Jacquemin.
+	
+	This IanniX score example is licensed under a
+	Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+	
+	You should have received a copy of the license along with this
+	work. If not, see <http://creativecommons.org/licenses/by-nc-sa/4.0/>.
+*/
+
+/*
+ *	IanniX Score File
+ */
+
+
+//Ask user for parameters before creation of the score
+function askUserForParameters() {
+	//Name
+	title("Xenakis Metastaseis");
+	//Global variables
+	ask("Speed", "- auto [duration]\n- [speed]", "speed", "auto 40");
+}
+
+//Creation of the score with script commands
+function makeWithScript() {
+	//Viewport setup
+	run("clear");
+		run("rotate 0 0 0");
+	run("zoom 180");
+	run("center 3 7");
+
+	var id;
+	maxPoints = 20;
+	maxX = 10;
+	maxY = 20;
+
+	for(i=0; i< 12; i++)
+	{
+		nPoints = Math.floor(random(0, maxPoints));
+
+		lastX = 0;		
+		x = 0;
+
+		line = ""; 
+		for(j =0; j < nPoints; j++)
+		{
+
+			if(j)
+				x = lastX +  random(0, maxX);
+			y = random(0, 10);
+
+			point = x + "," + y;
+			line += point + " ";
+
+			lastX = x;
+		}
+
+		addPolyline(line);
+	}
+
+ 
+	//Change cursors color
+	run("setColor cursors 255 135 0 255");
+	run("setColor lines   100 200 255 255");
+	run("registerTexture background -1.85 16.3 7.4 -0.8 Xenakis - Metastaseis.png");
+}
+
+
+//Cursor index as global variable
+var curve_id = 0;
+//Custom function 
+function addPolyline(path) {
+	run("add curve       " + curve_id);
+	run("setGroup        current lines");
+	run("setPointsLines  current 1 " + path);
+
+	//Cursor on this curve
+	run("add cursor " + curve_id );
+	run("setCurve   current lastCurve");
+	run("setPattern current 0 0 1");
+	run("setWidth   current 4");
+	run("setDepth   current 4");
+
+	run("setMessage current 20, osc://ip_out:port_out/" + curve_id + "/freq {cursor_value_y * 115 + 50}");
+
+
+	curve_id++;
+}
+
+
+/*
+ *	//APP VERSION: NEVER EVER REMOVE THIS LINE
+ *	Made with IanniX 0.9.16
+ *	//APP VERSION: NEVER EVER REMOVE THIS LINE
+ */
+
+
